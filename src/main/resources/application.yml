@@ -1,0 +1,52 @@
+server:
+  port: 8181
+  servlet:
+    context-path: /api/v1
+  error:
+    include-message: never
+    include-binding-errors: always
+spring:
+  application:
+    name: centro-medico
+  profiles:
+    active: dev
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    open-in-view: false
+  main:
+    allow-circular-references: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${AUTH_SERVER}
+          jwk-set-uri: ${AUTH_SERVER_CERT}
+      client:
+        registration:
+          keycloak:
+            client-id: ${CLIENT_ID}
+            client-secret: ${CLIENT_SECRET}
+            authorization-grant-type: authorization_code
+        provider:
+          keycloak:
+            issuer-uri: ${AUTH_SERVER}
+            token-uri: ${AUTH_SERVER_TOKEN}
+springdoc:
+  swagger-ui:
+    path: /docs
+  api-docs:
+    path: /api-docs
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,logfile
+logging:
+  file:
+    name: logs/backend.log
