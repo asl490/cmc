@@ -38,6 +38,7 @@ spring:
             issuer-uri: ${AUTH_SERVER}
             token-uri: ${AUTH_SERVER_TOKEN}
 springdoc:
+  default-produces-media-type: application/json
   swagger-ui:
     path: /docs
   api-docs:
@@ -50,3 +51,6 @@ management:
 logging:
   file:
     name: logs/backend.log
+pide:
+  url: ${PIDE_URL}
+  token: ${PIDE_TOKEN}

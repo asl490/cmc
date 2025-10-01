@@ -3,6 +3,7 @@ package pe.gob.cusco.centro_medico.auth.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
@@ -20,7 +21,7 @@ import pe.gob.cusco.centro_medico.auth.dto.UserInfoDTO;
 import pe.gob.cusco.centro_medico.auth.service.AuthService;
 
 @RestController
-@RequestMapping(value = "/auth")
+@RequestMapping(value = "/auth", produces = MediaType.APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
 public class AuthController {
 

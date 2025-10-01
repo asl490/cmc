@@ -14,6 +14,7 @@ import pe.gob.cusco.centro_medico.maintenance.service.PatientService;
 import pe.gob.cusco.centro_medico.maintenance.util.PatientDTO;
 import pe.gob.cusco.centro_medico.maintenance.util.PatientDTO.CreatePatientDTO;
 import pe.gob.cusco.centro_medico.maintenance.util.PatientDTO.FiltersPatientDTO;
+import pe.gob.cusco.centro_medico.maintenance.util.PatientDTO.FiltersPatientPersonDTO;
 import pe.gob.cusco.centro_medico.maintenance.util.PatientDTO.FiltersPatientSpecDTO;
 import pe.gob.cusco.centro_medico.maintenance.util.PatientDTO.UpdatePatientDTO;
 import pe.gob.cusco.centro_medico.maintenance.util.PatientMapper;
@@ -27,12 +28,14 @@ public class PatientServiceImpl extends
         implements PatientService {
 
     private final PatientMapper mapper;
+    private final PatientRepository repository;
     private final GenericSpecificationBuilder<Patient> specificationBuilder;
 
     public PatientServiceImpl(PatientRepository repository,
             PatientMapper mapper) {
         super(repository, mapper);
         this.mapper = mapper;
+        this.repository = repository;
         this.specificationBuilder = new GenericSpecificationBuilder<>();
     }
 
@@ -44,6 +47,26 @@ public class PatientServiceImpl extends
         Page<Patient> entityPage = repository.findAll(spec, pageable);
         List<PatientDTO> domainList = mapper.toDTOList(entityPage.getContent());
 
+        return new PagedResponse<>(
+                domainList,
+                entityPage.getNumber(),
+                entityPage.getSize(),
+                entityPage.getTotalElements(),
+                entityPage.getTotalPages(),
+                entityPage.isLast());
+    }
+
+    @Override
+    public PagedResponse<PatientDTO> pageFilterPatientPerson(int page, int size, FiltersPatientPersonDTO filters) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Patient> entityPage = repository
+                .findByPersonDniContainsAndPersonNameContainsAndPersonSurnameContainsAndClinicHistoryContains(
+                        filters.getDni() != null ? filters.getDni() : "",
+                        filters.getName() != null ? filters.getName() : "",
+                        filters.getSurname() != null ? filters.getSurname() : "",
+                        filters.getClinicHistory() != null ? filters.getClinicHistory() : "",
+                        pageable);
+        List<PatientDTO> domainList = mapper.toDTOList(entityPage.getContent());
         return new PagedResponse<>(
                 domainList,
                 entityPage.getNumber(),

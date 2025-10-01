@@ -57,4 +57,18 @@ public class DoctorDTO {
         private Person person;
 
     }
+
+    @Data
+    public static class FiltersDoctorPersonDTO {
+
+        private String specialty;
+
+        private String dni;
+
+        private String name;
+
+        private String surname;
+
+    }
+
 }

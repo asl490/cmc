@@ -8,9 +8,10 @@ import pe.gob.cusco.centro_medico.maintenance.util.ConceptDTO;
 import pe.gob.cusco.centro_medico.shared.BaseController;
 
 @RestController
-@RequestMapping("/concept")
+@RequestMapping("maintenance/concept")
 public class ConceptController
-        extends BaseController<ConceptDTO.CreateConceptDTO, ConceptDTO.UpdateConceptDTO, ConceptDTO, ConceptDTO.FiltersConceptDTO> {
+        extends
+        BaseController<ConceptDTO.CreateConceptDTO, ConceptDTO.UpdateConceptDTO, ConceptDTO, ConceptDTO.FiltersConceptDTO> {
 
     public ConceptController(ConceptService service) {
         super(service);

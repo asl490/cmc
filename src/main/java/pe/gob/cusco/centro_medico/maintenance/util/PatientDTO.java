@@ -15,13 +15,13 @@ import pe.gob.cusco.centro_medico.maintenance.entity.Person;
 public class PatientDTO {
     private Long id;
 
-    private String ocupation;
+    private String occupation;
 
     private String instructionLevel;
 
     private String workplace;
 
-    private Long clinicHistory;
+    private String clinicHistory;
 
     private PersonDTO person;
 
@@ -30,7 +30,7 @@ public class PatientDTO {
 
         @NotBlank
 
-        private String ocupation;
+        private String occupation;
 
         @NotBlank
 
@@ -42,7 +42,7 @@ public class PatientDTO {
 
         @NotNull
 
-        private Long clinicHistory;
+        private String clinicHistory;
 
         private Long person;
 
@@ -51,13 +51,13 @@ public class PatientDTO {
     @Data
     public static class UpdatePatientDTO {
 
-        private String ocupation;
+        private String occupation;
 
         private String instructionLevel;
 
         private String workplace;
 
-        private Long clinicHistory;
+        private String clinicHistory;
 
         private Long person;
 
@@ -66,13 +66,13 @@ public class PatientDTO {
     @Data
     public static class FiltersPatientDTO {
 
-        private String ocupation;
+        private String occupation;
 
         private String instructionLevel;
 
         private String workplace;
 
-        private Long clinicHistory;
+        private String clinicHistory;
 
         private Long person;
 
@@ -81,15 +81,28 @@ public class PatientDTO {
     @Data
     public static class FiltersPatientSpecDTO {
 
-        private String ocupation;
+        private String occupation;
 
         private String instructionLevel;
 
         private String workplace;
 
-        private Long clinicHistory;
+        private String clinicHistory;
 
         private Person person;
+
+    }
+
+    @Data
+    public static class FiltersPatientPersonDTO {
+
+        private String clinicHistory;
+
+        private String dni;
+
+        private String name;
+
+        private String surname;
 
     }
 }

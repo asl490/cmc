@@ -1,5 +1,6 @@
 package pe.gob.cusco.centro_medico.maintenance.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
@@ -18,13 +19,14 @@ import pe.gob.cusco.centro_medico.shared.Auditable;
 @EqualsAndHashCode(callSuper = true)
 public class Patient extends Auditable {
 
-    private String ocupation;
+    private String occupation;
 
     private String instructionLevel;
 
     private String workplace;
 
-    private Long clinicHistory;
+    @Column(unique = true)
+    private String clinicHistory;
 
     @OneToOne
     @JoinColumn(name = "person_id")
