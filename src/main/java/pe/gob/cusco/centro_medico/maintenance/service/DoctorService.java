@@ -10,4 +10,6 @@ public interface DoctorService
                 BaseService<DoctorDTO.CreateDoctorDTO, DoctorDTO.UpdateDoctorDTO, DoctorDTO, DoctorDTO.FiltersDoctorDTO> {
 
         PagedResponse<DoctorDTO> pageFilterDoctorPerson(int page, int size, FiltersDoctorPersonDTO filters);
+
+        DoctorDTO createDoctorAndPerson(DoctorDTO.CreateDoctorAndPersonDTO dto);
 }

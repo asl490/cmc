@@ -1,5 +1,6 @@
 package pe.gob.cusco.centro_medico.maintenance.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
@@ -20,7 +21,7 @@ public class Doctor extends Auditable {
 
     private String specialty;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "person_id")
     private Person person;
 

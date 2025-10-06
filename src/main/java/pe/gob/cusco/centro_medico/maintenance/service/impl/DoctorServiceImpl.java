@@ -7,6 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import pe.gob.cusco.centro_medico.maintenance.entity.Doctor;
 import pe.gob.cusco.centro_medico.maintenance.repository.DoctorRepository;
@@ -74,5 +75,12 @@ public class DoctorServiceImpl extends
                 entityPage.getTotalElements(),
                 entityPage.getTotalPages(),
                 entityPage.isLast());
+    }
+
+    @Override
+    @Transactional
+    public DoctorDTO createDoctorAndPerson(DoctorDTO.CreateDoctorAndPersonDTO dto) {
+        Doctor entity = mapper.toEntity(dto);
+        return mapper.toDTO(repository.save(entity));
     }
 }

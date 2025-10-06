@@ -7,6 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import pe.gob.cusco.centro_medico.maintenance.entity.Patient;
 import pe.gob.cusco.centro_medico.maintenance.repository.PatientRepository;
@@ -74,6 +75,13 @@ public class PatientServiceImpl extends
                 entityPage.getTotalElements(),
                 entityPage.getTotalPages(),
                 entityPage.isLast());
+    }
+
+    @Override
+    @Transactional
+    public PatientDTO createPatientAndPerson(PatientDTO.CreatePatientAndPersonDTO dto) {
+        Patient entity = mapper.toEntity(dto);
+        return mapper.toDTO(repository.save(entity));
     }
 
 }

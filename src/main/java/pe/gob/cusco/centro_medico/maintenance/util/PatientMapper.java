@@ -14,12 +14,16 @@ import pe.gob.cusco.centro_medico.maintenance.util.PatientDTO.FiltersPatientDTO;
 import pe.gob.cusco.centro_medico.maintenance.util.PatientDTO.FiltersPatientSpecDTO;
 import pe.gob.cusco.centro_medico.shared.BaseMapper;
 
-@Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+@Mapper(componentModel = "spring", uses = {
+        PersonMapper.class }, nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public abstract class PatientMapper
         implements BaseMapper<Patient, PatientDTO, PatientDTO.CreatePatientDTO, PatientDTO.UpdatePatientDTO> {
 
     @PersistenceContext
     private EntityManager entityManager;
+
+    @Mapping(target = "person", source = "person")
+    public abstract Patient toEntity(PatientDTO.CreatePatientAndPersonDTO dto);
 
     @Override
     @Mapping(target = "id", ignore = true)

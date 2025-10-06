@@ -14,12 +14,22 @@ import pe.gob.cusco.centro_medico.maintenance.util.DoctorDTO.FiltersDoctorDTO;
 import pe.gob.cusco.centro_medico.maintenance.util.DoctorDTO.FiltersDoctorSpecDTO;
 import pe.gob.cusco.centro_medico.shared.BaseMapper;
 
-@Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+@Mapper(componentModel = "spring", uses = {
+        PersonMapper.class }, nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public abstract class DoctorMapper
         implements BaseMapper<Doctor, DoctorDTO, DoctorDTO.CreateDoctorDTO, DoctorDTO.UpdateDoctorDTO> {
 
     @PersistenceContext
     private EntityManager entityManager;
+
+    @Mapping(target = "person", source = "person")
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "createdDate", ignore = true)
+    @Mapping(target = "lastModifiedDate", ignore = true)
+    @Mapping(target = "createdBy", ignore = true)
+    @Mapping(target = "lastModifiedBy", ignore = true)
+    @Mapping(target = "isDeleted", ignore = true)
+    public abstract Doctor toEntity(DoctorDTO.CreateDoctorAndPersonDTO dto);
 
     @Override
     @Mapping(target = "id", ignore = true)

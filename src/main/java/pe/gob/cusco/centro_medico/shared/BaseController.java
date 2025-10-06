@@ -16,7 +16,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-// @RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 public abstract class BaseController<CREATE_DTO, UPDATE_DTO, RESPONSE_DTO, TFilters> {
 
     protected final BaseService<CREATE_DTO, UPDATE_DTO, RESPONSE_DTO, TFilters> service;

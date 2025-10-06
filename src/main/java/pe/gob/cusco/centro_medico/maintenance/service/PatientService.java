@@ -11,4 +11,6 @@ public interface PatientService
 
     PagedResponse<PatientDTO> pageFilterPatientPerson(int page, int size, FiltersPatientPersonDTO filters);
 
+    PatientDTO createPatientAndPerson(PatientDTO.CreatePatientAndPersonDTO dto);
+
 }

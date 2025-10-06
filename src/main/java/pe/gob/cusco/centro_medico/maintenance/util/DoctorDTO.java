@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import pe.gob.cusco.centro_medico.maintenance.entity.Person;
+import pe.gob.cusco.centro_medico.maintenance.util.PersonDTO.CreatePersonDTO;
 
 @Data
 @Builder
@@ -69,6 +70,13 @@ public class DoctorDTO {
 
         private String surname;
 
+    }
+
+    @Data
+    public static class CreateDoctorAndPersonDTO {
+        private CreatePersonDTO person;
+        @NotBlank
+        private String specialty;
     }
 
 }

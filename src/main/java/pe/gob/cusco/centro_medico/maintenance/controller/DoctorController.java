@@ -1,5 +1,6 @@
 package pe.gob.cusco.centro_medico.maintenance.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,12 +27,17 @@ public class DoctorController
         this.service = service;
     }
 
-    @PostMapping("/filter-person")
     public ResponseEntity<PagedResponse<DoctorDTO>> getAllFilteredPagedByPerson(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
             @RequestBody FiltersDoctorPersonDTO filters) {
         PagedResponse<DoctorDTO> response = service.pageFilterDoctorPerson(page, size, filters);
         return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/full")
+    public ResponseEntity<DoctorDTO> createDoctorAndPerson(@RequestBody DoctorDTO.CreateDoctorAndPersonDTO dto) {
+        DoctorDTO response = service.createDoctorAndPerson(dto);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 }
