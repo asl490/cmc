@@ -9,6 +9,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import pe.gob.cusco.centro_medico.exception.exception.ResourceNotFoundException;
 import pe.gob.cusco.centro_medico.maintenance.entity.Patient;
 import pe.gob.cusco.centro_medico.maintenance.repository.PatientRepository;
 import pe.gob.cusco.centro_medico.maintenance.service.PatientService;
@@ -82,6 +83,16 @@ public class PatientServiceImpl extends
     public PatientDTO createPatientAndPerson(PatientDTO.CreatePatientAndPersonDTO dto) {
         Patient entity = mapper.toEntity(dto);
         return mapper.toDTO(repository.save(entity));
+    }
+
+    @Override
+    public PatientDTO getByDni(String dni) {
+
+        Patient patientOpt = repository.findByPersonDni(dni)
+                .orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
+
+        return mapper.toDTO(patientOpt);
+
     }
 
 }

@@ -9,5 +9,7 @@ public interface BaseMapper<ENTITY, DTO, CREATE_DTO, UPDATE_DTO> {
 
     ENTITY toEntity(CREATE_DTO dto);
 
+    List<ENTITY> toEntityList(List<CREATE_DTO> dto);
+
     void updateEntityFromDTO(UPDATE_DTO dto, ENTITY entity);
 }

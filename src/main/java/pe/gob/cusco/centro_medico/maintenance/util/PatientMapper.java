@@ -23,6 +23,12 @@ public abstract class PatientMapper
     private EntityManager entityManager;
 
     @Mapping(target = "person", source = "person")
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "createdDate", ignore = true)
+    @Mapping(target = "lastModifiedDate", ignore = true)
+    @Mapping(target = "createdBy", ignore = true)
+    @Mapping(target = "lastModifiedBy", ignore = true)
+    @Mapping(target = "isDeleted", ignore = true)
     public abstract Patient toEntity(PatientDTO.CreatePatientAndPersonDTO dto);
 
     @Override

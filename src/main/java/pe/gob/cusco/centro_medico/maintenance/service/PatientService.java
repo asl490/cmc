@@ -13,4 +13,6 @@ public interface PatientService
 
     PatientDTO createPatientAndPerson(PatientDTO.CreatePatientAndPersonDTO dto);
 
+    PatientDTO getByDni(String dni);
+
 }

@@ -15,7 +15,7 @@ import pe.gob.cusco.centro_medico.shared.BaseController;
 import pe.gob.cusco.centro_medico.shared.PagedResponse;
 
 @RestController
-@RequestMapping("/doctor")
+@RequestMapping("maintenance/doctor")
 public class DoctorController
         extends
         BaseController<DoctorDTO.CreateDoctorDTO, DoctorDTO.UpdateDoctorDTO, DoctorDTO, DoctorDTO.FiltersDoctorDTO> {
@@ -27,6 +27,7 @@ public class DoctorController
         this.service = service;
     }
 
+    @PostMapping("/filtered-paged-by-person")
     public ResponseEntity<PagedResponse<DoctorDTO>> getAllFilteredPagedByPerson(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,

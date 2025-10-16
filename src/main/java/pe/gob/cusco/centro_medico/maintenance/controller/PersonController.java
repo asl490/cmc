@@ -12,7 +12,7 @@ import pe.gob.cusco.centro_medico.maintenance.util.PidePerson;
 import pe.gob.cusco.centro_medico.shared.BaseController;
 
 @RestController
-@RequestMapping(value = "person")
+@RequestMapping(value = "maintenance/person")
 public class PersonController
         extends
         BaseController<PersonDTO.CreatePersonDTO, PersonDTO.UpdatePersonDTO, PersonDTO, PersonDTO.FiltersPersonDTO> {

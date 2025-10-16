@@ -8,9 +8,10 @@ import pe.gob.cusco.centro_medico.attention.util.AppointmentDTO;
 import pe.gob.cusco.centro_medico.shared.BaseController;
 
 @RestController
-@RequestMapping("/appointment")
+@RequestMapping("attention/appointment")
 public class AppointmentController
-        extends BaseController<AppointmentDTO.CreateAppointmentDTO, AppointmentDTO.UpdateAppointmentDTO, AppointmentDTO, AppointmentDTO.FiltersAppointmentDTO> {
+        extends
+        BaseController<AppointmentDTO.CreateAppointmentDTO, AppointmentDTO.UpdateAppointmentDTO, AppointmentDTO, AppointmentDTO.FiltersAppointmentDTO> {
 
     public AppointmentController(AppointmentService service) {
         super(service);
