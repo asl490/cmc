@@ -1,4 +1,4 @@
-package pe.gob.cusco.centro_medico.attention.util;
+package pe.gob.cusco.centro_medico.attention.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -8,10 +8,11 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import pe.gob.cusco.centro_medico.attention.dto.NursingRecordDTO;
+import pe.gob.cusco.centro_medico.attention.dto.NursingRecordDTO.FiltersNursingRecordDTO;
+import pe.gob.cusco.centro_medico.attention.dto.NursingRecordDTO.FiltersNursingRecordSpecDTO;
 import pe.gob.cusco.centro_medico.attention.entity.Appointment;
 import pe.gob.cusco.centro_medico.attention.entity.NursingRecord;
-import pe.gob.cusco.centro_medico.attention.util.NursingRecordDTO.FiltersNursingRecordDTO;
-import pe.gob.cusco.centro_medico.attention.util.NursingRecordDTO.FiltersNursingRecordSpecDTO;
 import pe.gob.cusco.centro_medico.maintenance.entity.VitalSign;
 import pe.gob.cusco.centro_medico.shared.BaseMapper;
 

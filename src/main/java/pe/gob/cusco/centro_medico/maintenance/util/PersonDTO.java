@@ -35,6 +35,7 @@ public class PersonDTO {
     private Integer age;
 
     private String birthLocation;
+    private String gender;
 
     @Data
     @Builder
@@ -73,7 +74,7 @@ public class PersonDTO {
         private Integer age;
 
         private String birthLocation;
-
+        private String gender;
     }
 
     @Data
@@ -98,7 +99,7 @@ public class PersonDTO {
         private Integer age;
 
         private String birthLocation;
-
+        private String gender;
     }
 
     @Data
@@ -124,6 +125,6 @@ public class PersonDTO {
         private Integer age;
 
         private String birthLocation;
-
+        private String gender;
     }
 }

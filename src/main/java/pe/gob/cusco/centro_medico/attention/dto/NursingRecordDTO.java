@@ -1,4 +1,4 @@
-package pe.gob.cusco.centro_medico.attention.util;
+package pe.gob.cusco.centro_medico.attention.dto;
 
 import java.util.List;
 

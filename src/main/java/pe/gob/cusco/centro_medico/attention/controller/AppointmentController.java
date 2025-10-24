@@ -3,8 +3,8 @@ package pe.gob.cusco.centro_medico.attention.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import pe.gob.cusco.centro_medico.attention.dto.AppointmentDTO;
 import pe.gob.cusco.centro_medico.attention.service.AppointmentService;
-import pe.gob.cusco.centro_medico.attention.util.AppointmentDTO;
 import pe.gob.cusco.centro_medico.shared.BaseController;
 
 @RestController

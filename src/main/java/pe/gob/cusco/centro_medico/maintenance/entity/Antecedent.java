@@ -1,13 +1,16 @@
 package pe.gob.cusco.centro_medico.maintenance.entity;
 
-import pe.gob.cusco.centro_medico.shared.Auditable;
-
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import pe.gob.cusco.centro_medico.maintenance.entity.enums.TypeAntecedent;
+import pe.gob.cusco.centro_medico.maintenance.entity.enums.TypeData;
+import pe.gob.cusco.centro_medico.shared.Auditable;
 
 @Data
 @Entity
@@ -21,6 +24,10 @@ public class Antecedent extends Auditable {
 
     private String description;
 
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private TypeAntecedent typeAntecedent;
+
+    @Enumerated(EnumType.STRING)
+    private TypeData typeData;
 
 }

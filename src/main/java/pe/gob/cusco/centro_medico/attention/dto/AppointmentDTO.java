@@ -1,4 +1,4 @@
-package pe.gob.cusco.centro_medico.attention.util;
+package pe.gob.cusco.centro_medico.attention.dto;
 
 import java.time.LocalDate;
 
@@ -82,6 +82,37 @@ public class AppointmentDTO {
         private String status;
 
         private String reason;
+
+        private LocalDate appointmentDate;
+
+    }
+
+    @Data
+    public static class FiltersAppointmentSpecDTO {
+
+        private PatientDTO patient;
+
+        private DoctorDTO doctor;
+
+        private ConceptDTO concept;
+
+        private String status;
+
+        private String reason;
+
+        private LocalDate appointmentDate;
+
+    }
+
+    @Data
+    public static class FiltersAppointmentAppointmentDTO {
+        private String dni;
+
+        private String dniDoctor;
+
+        private String clinicHistory;
+
+        private String status;
 
         private LocalDate appointmentDate;
 

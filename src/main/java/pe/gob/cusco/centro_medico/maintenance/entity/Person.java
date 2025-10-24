@@ -38,4 +38,6 @@ public class Person extends Auditable {
 
     private String birthLocation;
 
+    private String gender;
+
 }

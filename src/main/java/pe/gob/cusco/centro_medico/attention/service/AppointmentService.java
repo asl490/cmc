@@ -1,6 +1,6 @@
 package pe.gob.cusco.centro_medico.attention.service;
 
-import pe.gob.cusco.centro_medico.attention.util.AppointmentDTO;
+import pe.gob.cusco.centro_medico.attention.dto.AppointmentDTO;
 import pe.gob.cusco.centro_medico.shared.BaseService;
 
 public interface AppointmentService

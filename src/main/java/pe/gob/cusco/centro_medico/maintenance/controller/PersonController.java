@@ -1,5 +1,6 @@
 package pe.gob.cusco.centro_medico.maintenance.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,13 @@ public class PersonController
     @GetMapping("/pide/{dni}")
     public PidePerson getPersonPidePerson(@PathVariable String dni) {
         return service.pidePerson(dni).orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
+
+    }
+
+    @GetMapping("/dni/{dni}")
+    public ResponseEntity<PersonDTO> getPersonByDni(@PathVariable String dni) {
+
+        return ResponseEntity.ok(service.findByDni(dni));
 
     }
 

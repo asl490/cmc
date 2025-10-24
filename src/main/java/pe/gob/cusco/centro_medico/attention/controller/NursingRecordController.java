@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import pe.gob.cusco.centro_medico.attention.dto.NursingRecordDTO;
+import pe.gob.cusco.centro_medico.attention.dto.NursingRecordDTO.CreateFullNursingRecordDTO;
 import pe.gob.cusco.centro_medico.attention.service.NursingRecordService;
-import pe.gob.cusco.centro_medico.attention.util.NursingRecordDTO;
-import pe.gob.cusco.centro_medico.attention.util.NursingRecordDTO.CreateFullNursingRecordDTO;
 import pe.gob.cusco.centro_medico.shared.BaseController;
 
 @RestController

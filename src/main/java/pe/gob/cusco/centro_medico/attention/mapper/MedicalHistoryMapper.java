@@ -1,21 +1,17 @@
-package pe.gob.cusco.centro_medico.maintenance.util;
+package pe.gob.cusco.centro_medico.attention.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
-import pe.gob.cusco.centro_medico.maintenance.entity.Antecedent;
+import pe.gob.cusco.centro_medico.attention.dto.MedicalHistoryDTO;
+import pe.gob.cusco.centro_medico.attention.entity.MedicalHistory;
 import pe.gob.cusco.centro_medico.shared.BaseMapper;
 
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-public interface AntecedentMapper extends
-        BaseMapper<Antecedent, AntecedentDTO, AntecedentDTO.CreateAntecedentDTO, AntecedentDTO.UpdateAntecedentDTO> {
-
-    @Override
-    @Mapping(source = "typeAntecedent.description", target = "typeAntecedent")
-    @Mapping(source = "typeData.description", target = "typeData")
-    AntecedentDTO toDTO(Antecedent entity);
+public interface MedicalHistoryMapper extends
+        BaseMapper<MedicalHistory, MedicalHistoryDTO, MedicalHistoryDTO.CreateMedicalHistoryDTO, MedicalHistoryDTO.UpdateMedicalHistoryDTO> {
 
     @Override
     @Mapping(target = "id", ignore = true)
@@ -24,7 +20,7 @@ public interface AntecedentMapper extends
     @Mapping(target = "createdBy", ignore = true)
     @Mapping(target = "lastModifiedBy", ignore = true)
     @Mapping(target = "isDeleted", ignore = true)
-    Antecedent toEntity(AntecedentDTO.CreateAntecedentDTO dto);
+    MedicalHistory toEntity(MedicalHistoryDTO.CreateMedicalHistoryDTO dto);
 
     @Override
     @Mapping(target = "id", ignore = true)
@@ -33,6 +29,6 @@ public interface AntecedentMapper extends
     @Mapping(target = "createdBy", ignore = true)
     @Mapping(target = "lastModifiedBy", ignore = true)
     @Mapping(target = "isDeleted", ignore = true)
-    void updateEntityFromDTO(AntecedentDTO.UpdateAntecedentDTO dto, @MappingTarget Antecedent entity);
+    void updateEntityFromDTO(MedicalHistoryDTO.UpdateMedicalHistoryDTO dto, @MappingTarget MedicalHistory entity);
 
 }

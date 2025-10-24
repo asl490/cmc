@@ -1,4 +1,4 @@
-package pe.gob.cusco.centro_medico.attention.util;
+package pe.gob.cusco.centro_medico.attention.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -8,6 +8,7 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import pe.gob.cusco.centro_medico.attention.dto.AppointmentDTO;
 import pe.gob.cusco.centro_medico.attention.entity.Appointment;
 import pe.gob.cusco.centro_medico.maintenance.entity.Concept;
 import pe.gob.cusco.centro_medico.maintenance.entity.Doctor;

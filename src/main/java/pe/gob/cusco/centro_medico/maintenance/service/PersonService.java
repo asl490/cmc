@@ -13,5 +13,7 @@ public interface PersonService
 
         Optional<Person> findOptionalByDNI(String dni);
 
+        PersonDTO findByDni(String dni);
+
         Optional<PidePerson> pidePerson(String dni);
 }
