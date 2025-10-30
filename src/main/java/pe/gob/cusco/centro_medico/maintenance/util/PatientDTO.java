@@ -25,6 +25,7 @@ public class PatientDTO {
     private String clinicHistory;
 
     private PersonDTO person;
+    private Boolean hasHistory;
 
     @Data
     public static class CreatePatientDTO {

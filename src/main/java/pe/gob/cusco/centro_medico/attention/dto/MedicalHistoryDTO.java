@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pe.gob.cusco.centro_medico.maintenance.util.AntecedentDTO;
 
 @Data
 @Builder
@@ -16,7 +17,7 @@ public class MedicalHistoryDTO {
 
     private Long patient;
 
-    private Long antecedent;
+    private AntecedentDTO antecedent;
 
     private Boolean valueBoolean;
 

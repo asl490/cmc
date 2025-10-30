@@ -15,4 +15,6 @@ public interface PatientService
 
     PatientDTO getByDni(String dni);
 
+    PatientDTO updateHistory(Long id);
+
 }

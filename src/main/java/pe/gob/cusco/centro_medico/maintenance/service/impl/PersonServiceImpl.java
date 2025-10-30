@@ -98,7 +98,7 @@ public class PersonServiceImpl extends
     @Override
     public PersonDTO findByDni(String dni) {
         return mapper.toDTO(findOptionalByDNI(dni)
-                .orElseThrow(() -> new ResourceNotFoundException("Persona no registrada")));
+                .orElse(null));
     }
 
 }

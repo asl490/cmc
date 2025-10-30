@@ -1,15 +1,13 @@
 package pe.gob.cusco.centro_medico.maintenance.entity;
 
-import jakarta.persistence.CascadeType;
+import pe.gob.cusco.centro_medico.shared.Auditable;
+
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-import pe.gob.cusco.centro_medico.shared.Auditable;
 
 @Data
 @Entity
@@ -17,12 +15,10 @@ import pe.gob.cusco.centro_medico.shared.Auditable;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class Doctor extends Auditable {
+public class Laboratory extends Auditable {
 
-    private String specialty;
+    private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "person_id")
-    private Person person;
+    private String type;
 
 }

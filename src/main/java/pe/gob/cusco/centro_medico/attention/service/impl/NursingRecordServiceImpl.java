@@ -24,6 +24,7 @@ import pe.gob.cusco.centro_medico.attention.repository.NursingRecordRepository;
 import pe.gob.cusco.centro_medico.attention.service.AppointmentService;
 import pe.gob.cusco.centro_medico.attention.service.NursingRecordService;
 import pe.gob.cusco.centro_medico.exception.exception.BusinessRuleException;
+import pe.gob.cusco.centro_medico.maintenance.service.PatientService;
 import pe.gob.cusco.centro_medico.maintenance.util.PatientDTO.FiltersPatientPersonDTO;
 import pe.gob.cusco.centro_medico.shared.BaseServiceImpl;
 import pe.gob.cusco.centro_medico.shared.GenericSpecificationBuilder;
@@ -38,16 +39,18 @@ public class NursingRecordServiceImpl extends
     private final NursingRecordMapper mapper;
     private final GenericSpecificationBuilder<NursingRecord> specificationBuilder;
     private final AppointmentService appointmentService;
-    private final AppointmentStatus NURSE_REVIEW = AppointmentStatus.NURSE_REVIEW;
+    private final PatientService patientService;
+    private final AppointmentStatus IN_CONSULTATION = AppointmentStatus.IN_CONSULTATION;
     private final AppointmentStatus PENDING = AppointmentStatus.PENDING;
 
     public NursingRecordServiceImpl(NursingRecordRepository repository,
-            NursingRecordMapper mapper, AppointmentService appointmentService) {
+            NursingRecordMapper mapper, AppointmentService appointmentService, PatientService patientService) {
         super(repository, mapper);
         this.repository = repository;
         this.mapper = mapper;
         this.specificationBuilder = new GenericSpecificationBuilder<>();
         this.appointmentService = appointmentService;
+        this.patientService = patientService;
 
     }
 
@@ -86,7 +89,8 @@ public class NursingRecordServiceImpl extends
         var appointment = appointmentService.getById(dto.getAppointment());
         if (appointment.getStatus().equals(PENDING.getDescription())) {
             repository.saveAll(entities);
-            appointmentService.UpdateStatus(dto.getAppointment(), NURSE_REVIEW.getDescription());
+            appointmentService.UpdateStatus(dto.getAppointment(), IN_CONSULTATION.getDescription());
+            patientService.updateHistory(appointment.getPatient().getId());
         } else {
             throw new BusinessRuleException("La cita no está en estado pendiente.");
         }
@@ -98,6 +102,11 @@ public class NursingRecordServiceImpl extends
             FiltersPatientPersonDTO filters) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'pageFilterPatientPerson'");
+    }
+
+    @Override
+    public List<NursingRecordDTO> getByAppointmentId(Long appointmentId) {
+        return mapper.toDTOList(repository.findByAppointmentId(appointmentId));
     }
 
 }

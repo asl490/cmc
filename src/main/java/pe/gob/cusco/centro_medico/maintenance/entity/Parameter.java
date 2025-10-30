@@ -17,12 +17,20 @@ import pe.gob.cusco.centro_medico.shared.Auditable;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class Doctor extends Auditable {
-
-    private String specialty;
+public class Parameter extends Auditable {
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "person_id")
-    private Person person;
+    @JoinColumn(name = "laboratory_id")
+    private Laboratory laboratory;
+
+    private String name;
+
+    private Double maxValue;
+
+    private Double minValue;
+
+    private String unit;
+
+    private String isQualitative;
 
 }

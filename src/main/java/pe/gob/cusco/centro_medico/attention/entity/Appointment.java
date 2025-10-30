@@ -36,6 +36,7 @@ public class Appointment extends Auditable {
     private Concept concept;
 
     private String status;
+    // private String statusPhase;
 
     private String reason;
 

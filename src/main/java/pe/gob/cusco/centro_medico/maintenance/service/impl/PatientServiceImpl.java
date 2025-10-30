@@ -9,7 +9,6 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import pe.gob.cusco.centro_medico.exception.exception.ResourceNotFoundException;
 import pe.gob.cusco.centro_medico.maintenance.entity.Patient;
 import pe.gob.cusco.centro_medico.maintenance.repository.PatientRepository;
 import pe.gob.cusco.centro_medico.maintenance.service.PatientService;
@@ -88,11 +87,17 @@ public class PatientServiceImpl extends
     @Override
     public PatientDTO getByDni(String dni) {
 
-        Patient patientOpt = repository.findByPersonDni(dni)
-                .orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
+        Patient patientOpt = repository.findByPersonDni(dni).orElse(null);
 
         return mapper.toDTO(patientOpt);
 
+    }
+
+    @Override
+    public PatientDTO updateHistory(Long id) {
+        Patient patientOpt = repository.findById(id).orElse(null);
+        patientOpt.setHasHistory(true);
+        return super.mapper.toDTO(repository.save(patientOpt));
     }
 
 }

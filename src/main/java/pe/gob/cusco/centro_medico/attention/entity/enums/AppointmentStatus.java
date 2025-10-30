@@ -5,7 +5,8 @@ public enum AppointmentStatus {
     PENDING("Pendiente"),
     NURSE_REVIEW("Enfermería"),
 
-    TO_LAB("Laboratorio"),
+    IN_CONSULTATION("En consulta"),
+    // TO_LAB("Laboratorio"),
 
     COMPLETED("Completada"),
 
