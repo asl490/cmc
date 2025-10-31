@@ -31,6 +31,6 @@ public class Parameter extends Auditable {
 
     private String unit;
 
-    private String isQualitative;
+    private Boolean isQualitative;
 
 }

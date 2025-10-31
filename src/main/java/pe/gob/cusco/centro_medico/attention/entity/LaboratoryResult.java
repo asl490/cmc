@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-import pe.gob.cusco.centro_medico.maintenance.entity.Laboratory;
+import pe.gob.cusco.centro_medico.maintenance.entity.Parameter;
 import pe.gob.cusco.centro_medico.shared.Auditable;
 
 @Data
@@ -17,16 +17,19 @@ import pe.gob.cusco.centro_medico.shared.Auditable;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class LaboratoryOrder extends Auditable {
+public class LaboratoryResult extends Auditable {
 
     @ManyToOne
-    @JoinColumn(name = "laboratory_id")
-    private Laboratory laboratory;
-
+    @JoinColumn(name = "laboratory_order_id")
+    private LaboratoryOrder laboratoryOrder;
     @ManyToOne
-    @JoinColumn(name = "appointment_id")
-    private Appointment appointment;
+    @JoinColumn(name = "parameter_id")
+    private Parameter parameter;
 
-    private String status;
+    private Long numericalValue;
+
+    private String textValue;
+
+    private String observation;
 
 }

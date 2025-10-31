@@ -22,7 +22,7 @@ public class ParameterDTO {
 
     private String unit;
 
-    private String isQualitative;
+    private Boolean isQualitative;
 
     @Data
     public static class CreateParameterDTO {
@@ -37,7 +37,7 @@ public class ParameterDTO {
 
         private String unit;
 
-        private String isQualitative;
+        private Boolean isQualitative;
 
     }
 
@@ -54,7 +54,7 @@ public class ParameterDTO {
 
         private String unit;
 
-        private String isQualitative;
+        private Boolean isQualitative;
 
     }
 
@@ -71,7 +71,7 @@ public class ParameterDTO {
 
         private String unit;
 
-        private String isQualitative;
+        private Boolean isQualitative;
 
     }
 }

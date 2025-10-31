@@ -122,7 +122,7 @@ public class AuthService {
 
         MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
         map.add("grant_type", "refresh_token");
-        map.add("client_id", "app-slogis");
+        map.add("client_id", CLIENT_ID);
         map.add("client_secret", CLIENT_SECRET);
         map.add("refresh_token", refreshToken);
 
@@ -150,7 +150,7 @@ public class AuthService {
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
         MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
-        map.add("client_id", "app-slogis");
+        map.add("client_id", CLIENT_ID);
         map.add("client_secret", CLIENT_SECRET);
         map.add("refresh_token", refreshToken);
 

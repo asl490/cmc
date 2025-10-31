@@ -24,16 +24,6 @@ public abstract class ParameterMapper
     @PersistenceContext
     private EntityManager entityManager;
 
-    // @Mapping(target = "laboratory", source = "laboratory")
-    // @Mapping(target = "id", ignore = true)
-    // @Mapping(target = "createdDate", ignore = true)
-    // @Mapping(target = "lastModifiedDate", ignore = true)
-    // @Mapping(target = "createdBy", ignore = true)
-    // @Mapping(target = "lastModifiedBy", ignore = true)
-    // @Mapping(target = "isDeleted", ignore = true)
-    // public abstract Parameter
-    // toEntity(ParameterDTO.CreateParameterAndLaboratoryDTO dto);
-
     @Override
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "createdDate", ignore = true)
@@ -53,10 +43,6 @@ public abstract class ParameterMapper
     @Mapping(target = "isDeleted", ignore = true)
     @Mapping(target = "laboratory", source = "laboratory", qualifiedByName = "mapLaboratoryFromId")
     public abstract void updateEntityFromDTO(ParameterDTO.UpdateParameterDTO dto, @MappingTarget Parameter entity);
-
-    // @Mapping(target = "laboratory", source = "laboratory", qualifiedByName =
-    // "mapLaboratoryFromId")
-    // public abstract FiltersParameterSpecDTO toSpec(FiltersParameterDTO dto);
 
     @Named("mapLaboratoryFromId")
     protected Laboratory mapLaboratoryFromId(Long id) {

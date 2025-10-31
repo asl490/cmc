@@ -4,13 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-
-
-
-
-
-
+import pe.gob.cusco.centro_medico.maintenance.dto.LaboratoryDTO;
 
 @Data
 @Builder
@@ -19,47 +13,38 @@ import lombok.NoArgsConstructor;
 public class LaboratoryOrderDTO {
     private Long id;
 
-    private Long laboratory;
+    private LaboratoryDTO laboratory;
 
-    private Long appointment;
+    private AppointmentDTO appointment;
 
     private String status;
 
-
     @Data
     public static class CreateLaboratoryOrderDTO {
-        
-        
-            private Long laboratory;
-        
-        
-            private Long appointment;
-        
-        
-            private String status;
-        
+
+        private Long laboratory;
+
+        private Long appointment;
+
+        private String status;
+
     }
 
     @Data
     public static class UpdateLaboratoryOrderDTO {
-        
+
         private Long laboratory;
-    
+
         private Long appointment;
-    
+
         private String status;
-    
+
     }
 
     @Data
     public static class FiltersLaboratoryOrderDTO {
 
-    
-        private Long laboratory;
-    
-        private Long appointment;
-    
         private String status;
-    
+
     }
 }
