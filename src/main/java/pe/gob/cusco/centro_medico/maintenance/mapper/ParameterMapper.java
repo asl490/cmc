@@ -9,6 +9,7 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import pe.gob.cusco.centro_medico.maintenance.dto.ParameterDTO;
+import pe.gob.cusco.centro_medico.maintenance.dto.ParameterDTO.ParameterPlainDTO;
 import pe.gob.cusco.centro_medico.maintenance.entity.Laboratory;
 import pe.gob.cusco.centro_medico.maintenance.entity.Parameter;
 // import pe.gob.cusco.centro_medico.maintenance.util.ParameterDTO.FiltersParameterDTO;
@@ -43,6 +44,9 @@ public abstract class ParameterMapper
     @Mapping(target = "isDeleted", ignore = true)
     @Mapping(target = "laboratory", source = "laboratory", qualifiedByName = "mapLaboratoryFromId")
     public abstract void updateEntityFromDTO(ParameterDTO.UpdateParameterDTO dto, @MappingTarget Parameter entity);
+
+    @Mapping(target = "laboratory", source = "laboratory.id")
+    public abstract ParameterPlainDTO toPlainDTO(Parameter entity);
 
     @Named("mapLaboratoryFromId")
     protected Laboratory mapLaboratoryFromId(Long id) {

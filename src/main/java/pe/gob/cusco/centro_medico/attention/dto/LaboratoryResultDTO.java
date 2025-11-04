@@ -1,9 +1,12 @@
 package pe.gob.cusco.centro_medico.attention.dto;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pe.gob.cusco.centro_medico.maintenance.dto.LaboratoryDTO.LaboratoryParameterDTO;
 import pe.gob.cusco.centro_medico.maintenance.dto.ParameterDTO;
 
 @Data
@@ -67,4 +70,16 @@ public class LaboratoryResultDTO {
         private String observation;
 
     }
+
+    @Data
+    @Builder
+    public static class LaboratoryResultFieldsDTO {
+
+        private Long appointment;
+        // private Long labortoryOrder;
+
+        private List<LaboratoryParameterDTO> laboratory;
+
+    }
+
 }

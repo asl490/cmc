@@ -74,4 +74,24 @@ public class ParameterDTO {
         private Boolean isQualitative;
 
     }
+
+    @Data
+    @Builder
+    public static class ParameterPlainDTO {
+
+        private Long id;
+
+        private Long laboratory;
+
+        private String name;
+
+        private Double maxValue;
+
+        private Double minValue;
+
+        private String unit;
+
+        private Boolean isQualitative;
+
+    }
 }

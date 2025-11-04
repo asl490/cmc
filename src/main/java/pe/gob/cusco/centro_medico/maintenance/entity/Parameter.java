@@ -1,6 +1,5 @@
 package pe.gob.cusco.centro_medico.maintenance.entity;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -19,7 +18,7 @@ import pe.gob.cusco.centro_medico.shared.Auditable;
 @EqualsAndHashCode(callSuper = true)
 public class Parameter extends Auditable {
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "laboratory_id")
     private Laboratory laboratory;
 
