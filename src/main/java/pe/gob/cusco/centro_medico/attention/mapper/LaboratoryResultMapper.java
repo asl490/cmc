@@ -9,6 +9,7 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import pe.gob.cusco.centro_medico.attention.dto.LaboratoryResultDTO;
+import pe.gob.cusco.centro_medico.attention.dto.LaboratoryResultDTO.LaboratoryResultMinDTO;
 import pe.gob.cusco.centro_medico.attention.entity.LaboratoryOrder;
 import pe.gob.cusco.centro_medico.attention.entity.LaboratoryResult;
 import pe.gob.cusco.centro_medico.maintenance.entity.Parameter;
@@ -48,6 +49,9 @@ public abstract class LaboratoryResultMapper implements
     @Mapping(target = "laboratoryOrder", source = "laboratoryOrder", qualifiedByName = "mapLaboratoryOrderFromId")
     public abstract void updateEntityFromDTO(LaboratoryResultDTO.UpdateLaboratoryResultDTO dto,
             @MappingTarget LaboratoryResult entity);
+
+    @Mapping(target = "laboratoryOrder", source = "laboratoryOrder.id")
+    public abstract LaboratoryResultMinDTO toMinDTO(LaboratoryResult entity);
 
     @Named("mapParameter")
     protected Parameter mapParameter(Long id) {

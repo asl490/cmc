@@ -42,6 +42,21 @@ public class LaboratoryResultDTO {
     }
 
     @Data
+    public static class LaboratoryResultMinDTO {
+
+        private Long laboratoryOrder;
+
+        private ParameterDTO parameter;
+
+        private Long numericalValue;
+
+        private String textValue;
+
+        private String observation;
+
+    }
+
+    @Data
     public static class UpdateLaboratoryResultDTO {
 
         private Long laboratoryOrder;

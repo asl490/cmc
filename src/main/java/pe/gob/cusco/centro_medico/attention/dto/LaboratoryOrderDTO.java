@@ -31,6 +31,17 @@ public class LaboratoryOrderDTO {
     }
 
     @Data
+    public static class LaboratoryOrderMinDTO {
+
+        private LaboratoryDTO laboratory;
+
+        private Long appointment;
+
+        private String status;
+
+    }
+
+    @Data
     public static class UpdateLaboratoryOrderDTO {
 
         private Long laboratory;

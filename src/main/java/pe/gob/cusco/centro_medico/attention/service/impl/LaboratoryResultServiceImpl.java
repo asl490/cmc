@@ -10,6 +10,7 @@ import pe.gob.cusco.centro_medico.attention.dto.LaboratoryResultDTO;
 import pe.gob.cusco.centro_medico.attention.dto.LaboratoryResultDTO.CreateLaboratoryResultDTO;
 import pe.gob.cusco.centro_medico.attention.dto.LaboratoryResultDTO.FiltersLaboratoryResultDTO;
 import pe.gob.cusco.centro_medico.attention.dto.LaboratoryResultDTO.LaboratoryResultFieldsDTO;
+import pe.gob.cusco.centro_medico.attention.dto.LaboratoryResultDTO.LaboratoryResultMinDTO;
 import pe.gob.cusco.centro_medico.attention.dto.LaboratoryResultDTO.UpdateLaboratoryResultDTO;
 import pe.gob.cusco.centro_medico.attention.entity.LaboratoryResult;
 import pe.gob.cusco.centro_medico.attention.mapper.LaboratoryResultMapper;
@@ -26,6 +27,8 @@ public class LaboratoryResultServiceImpl extends
         implements LaboratoryResultService {
     private final LaboratoryOrderService laboratoryOrderService;
     private final LaboratoryService laboratoryService;
+    private final LaboratoryResultRepository repository;
+    private final LaboratoryResultMapper mapper;
 
     public LaboratoryResultServiceImpl(LaboratoryResultRepository repository,
             LaboratoryResultMapper mapper, LaboratoryOrderService laboratoryOrderService,
@@ -33,11 +36,13 @@ public class LaboratoryResultServiceImpl extends
         super(repository, mapper);
         this.laboratoryOrderService = laboratoryOrderService;
         this.laboratoryService = laboratoryService;
+        this.repository = repository;
+        this.mapper = mapper;
 
     }
 
     @Override
-    public LaboratoryResultFieldsDTO getParamtersByAppointmentId(Long appointmentId) {
+    public LaboratoryResultFieldsDTO getParametersByAppointmentId(Long appointmentId) {
 
         List<LaboratoryOrderDTO> laboratoryOrders = laboratoryOrderService.getByAppointmentId(appointmentId);
 
@@ -57,6 +62,21 @@ public class LaboratoryResultServiceImpl extends
 
         }
         return result;
+    }
+
+    @Override
+    public List<LaboratoryResultMinDTO> getResultsByAppointmentId(Long appointmentId) {
+        return repository.findByLaboratoryOrderAppointmentId(appointmentId).stream()
+                .map(mapper::toMinDTO)
+                .toList();
+    }
+
+    @Override
+    public void createAllDto(List<CreateLaboratoryResultDTO> dtoList) {
+
+        dtoList.forEach(dto -> {
+            super.create(dto);
+        });
     }
 
 }
