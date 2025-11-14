@@ -16,4 +16,6 @@ public interface LaboratoryResultService
         List<LaboratoryResultMinDTO> getResultsByAppointmentId(Long appointmentId);
 
         void createAllDto(List<LaboratoryResultDTO.CreateLaboratoryResultDTO> dtoList);
+
+        void updateAllDto(List<LaboratoryResultDTO.UpdateLaboratoryResultAllDTO> dtoList);
 }

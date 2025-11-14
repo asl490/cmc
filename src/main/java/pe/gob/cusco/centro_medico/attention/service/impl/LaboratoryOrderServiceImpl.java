@@ -20,6 +20,7 @@ import pe.gob.cusco.centro_medico.attention.mapper.AppointmentMapper;
 import pe.gob.cusco.centro_medico.attention.mapper.LaboratoryOrderMapper;
 import pe.gob.cusco.centro_medico.attention.repository.LaboratoryOrderRepository;
 import pe.gob.cusco.centro_medico.attention.service.LaboratoryOrderService;
+import pe.gob.cusco.centro_medico.exception.exception.ResourceNotFoundException;
 import pe.gob.cusco.centro_medico.shared.BaseServiceImpl;
 import pe.gob.cusco.centro_medico.shared.PagedResponse;
 
@@ -79,6 +80,15 @@ public class LaboratoryOrderServiceImpl extends
                 appointments.getTotalPages(),
                 appointments.isLast());
 
+    }
+
+    @Override
+    public void updateStatusById(Long id, String status) {
+
+        super.repository.findById(id).map(laboratoryOrder -> {
+            laboratoryOrder.setStatus(status);
+            return super.repository.save(laboratoryOrder);
+        }).orElseThrow(() -> new ResourceNotFoundException("Laboratory Order not found with id " + id));
     }
 
 }

@@ -72,18 +72,15 @@ public class AppointmentDTO {
 
     @Data
     public static class FiltersAppointmentDTO {
+        private String dni;
 
-        private Long patient;
+        private String dniDoctor;
 
-        private Long doctor;
-
-        private Long concept;
+        private String clinicHistory;
 
         private String status;
 
-        private String reason;
-
-        private LocalDate appointmentDate;
+        // private LocalDate appointmentDate;
 
     }
 

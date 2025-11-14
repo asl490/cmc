@@ -13,4 +13,7 @@ public interface AppointmentRepository extends BaseJpaRepository<Appointment> {
     Page<Appointment> findByPatientPersonDniContainsAndPatientPersonNameContainsAndPatientPersonSurnameAndDoctorPersonDniContains(
             String patientDni, String patientName, String patientSurname, String doctorDni, Pageable pageable);
 
+    Page<Appointment> findByPatientPersonDniContainsAndDoctorPersonDniContainsAndStatusContainsAndPatientClinicHistoryContains(
+            String patientDni, String doctorDni, String status, String clinicHistory, Pageable pageable);
+
 }

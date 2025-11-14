@@ -10,7 +10,8 @@ import pe.gob.cusco.centro_medico.maintenance.entity.Laboratory;
 import pe.gob.cusco.centro_medico.shared.BaseMapper;
 
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-public interface LaboratoryMapper extends BaseMapper<Laboratory, LaboratoryDTO, LaboratoryDTO.CreateLaboratoryDTO, LaboratoryDTO.UpdateLaboratoryDTO> {
+public interface LaboratoryMapper extends
+        BaseMapper<Laboratory, LaboratoryDTO, LaboratoryDTO.CreateLaboratoryDTO, LaboratoryDTO.UpdateLaboratoryDTO> {
 
     @Override
     @Mapping(target = "id", ignore = true)
@@ -19,6 +20,7 @@ public interface LaboratoryMapper extends BaseMapper<Laboratory, LaboratoryDTO, 
     @Mapping(target = "createdBy", ignore = true)
     @Mapping(target = "lastModifiedBy", ignore = true)
     @Mapping(target = "isDeleted", ignore = true)
+    @Mapping(target = "parameters", ignore = true)
     Laboratory toEntity(LaboratoryDTO.CreateLaboratoryDTO dto);
 
     @Override
@@ -28,6 +30,7 @@ public interface LaboratoryMapper extends BaseMapper<Laboratory, LaboratoryDTO, 
     @Mapping(target = "createdBy", ignore = true)
     @Mapping(target = "lastModifiedBy", ignore = true)
     @Mapping(target = "isDeleted", ignore = true)
+    @Mapping(target = "parameters", ignore = true)
     void updateEntityFromDTO(LaboratoryDTO.UpdateLaboratoryDTO dto, @MappingTarget Laboratory entity);
 
 }

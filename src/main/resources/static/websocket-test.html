@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+</head>
+<body>
+    <h1>Real-time Appointment Updates</h1>
+    <div id="appointments">
+        <h2>New Appointments:</h2>
+        <ul id="new-appointments-list"></ul>
+    </div>
+    <div id="status-updates">
+        <h2>Status Updates:</h2>
+        <ul id="status-updates-list"></ul>
+    </div>
+
+    <script>
+        var socket = new SockJS('/api/v1/ws');
+        var stompClient = Stomp.over(socket);
+
+        stompClient.connect({}, function(frame) {
+            console.log('Connected: ' + frame);
+
+            // Subscribe to new appointments
+            stompClient.subscribe('/topic/appointments', function(message) {
+                var appointment = JSON.parse(message.body);
+                var list = document.getElementById('new-appointments-list');
+                var item = document.createElement('li');
+                item.appendChild(document.createTextNode(
+                    'New Appointment: ID=' + appointment.id + 
+                    ', Patient DNI=' + appointment.patient.person.dni +
+                    ', Doctor DNI=' + appointment.doctor.person.dni +
+                    ', Status=' + appointment.status
+                ));
+                list.appendChild(item);
+            });
+
+            // Subscribe to status updates
+            stompClient.subscribe('/topic/appointments/status', function(message) {
+                var appointment = JSON.parse(message.body);
+                var list = document.getElementById('status-updates-list');
+                var item = document.createElement('li');
+                item.appendChild(document.createTextNode(
+                    'Status Update: ID=' + appointment.id + 
+                    ', New Status=' + appointment.status
+                ));
+                list.appendChild(item);
+            });
+        });
+
+        function disconnect() {
+            if (stompClient !== null) {
+                stompClient.disconnect();
+            }
+            console.log("Disconnected");
+        }
+    </script>
+</body>
+</html>

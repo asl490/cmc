@@ -29,6 +29,7 @@ public abstract class PatientMapper
     @Mapping(target = "createdBy", ignore = true)
     @Mapping(target = "lastModifiedBy", ignore = true)
     @Mapping(target = "isDeleted", ignore = true)
+    @Mapping(target = "hasHistory", ignore = true)
     public abstract Patient toEntity(PatientDTO.CreatePatientAndPersonDTO dto);
 
     @Override
@@ -38,6 +39,7 @@ public abstract class PatientMapper
     @Mapping(target = "createdBy", ignore = true)
     @Mapping(target = "lastModifiedBy", ignore = true)
     @Mapping(target = "isDeleted", ignore = true)
+    @Mapping(target = "hasHistory", ignore = true)
     @Mapping(target = "person", source = "person", qualifiedByName = "mapPersonFromId")
     public abstract Patient toEntity(PatientDTO.CreatePatientDTO dto);
 
@@ -48,6 +50,7 @@ public abstract class PatientMapper
     @Mapping(target = "createdBy", ignore = true)
     @Mapping(target = "lastModifiedBy", ignore = true)
     @Mapping(target = "isDeleted", ignore = true)
+    @Mapping(target = "hasHistory", ignore = true)
     @Mapping(target = "person", source = "person", qualifiedByName = "mapPersonFromId")
     public abstract void updateEntityFromDTO(PatientDTO.UpdatePatientDTO dto, @MappingTarget Patient entity);
 

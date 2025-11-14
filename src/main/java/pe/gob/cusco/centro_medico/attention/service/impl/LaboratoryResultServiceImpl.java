@@ -11,6 +11,7 @@ import pe.gob.cusco.centro_medico.attention.dto.LaboratoryResultDTO.CreateLabora
 import pe.gob.cusco.centro_medico.attention.dto.LaboratoryResultDTO.FiltersLaboratoryResultDTO;
 import pe.gob.cusco.centro_medico.attention.dto.LaboratoryResultDTO.LaboratoryResultFieldsDTO;
 import pe.gob.cusco.centro_medico.attention.dto.LaboratoryResultDTO.LaboratoryResultMinDTO;
+import pe.gob.cusco.centro_medico.attention.dto.LaboratoryResultDTO.UpdateLaboratoryResultAllDTO;
 import pe.gob.cusco.centro_medico.attention.dto.LaboratoryResultDTO.UpdateLaboratoryResultDTO;
 import pe.gob.cusco.centro_medico.attention.entity.LaboratoryResult;
 import pe.gob.cusco.centro_medico.attention.mapper.LaboratoryResultMapper;
@@ -76,6 +77,21 @@ public class LaboratoryResultServiceImpl extends
 
         dtoList.forEach(dto -> {
             super.create(dto);
+            laboratoryOrderService.updateStatusById(dto.getLaboratoryOrder(), "COMPLETADO");
+        });
+    }
+
+    @Override
+    public void updateAllDto(List<UpdateLaboratoryResultAllDTO> dtoList) {
+        dtoList.forEach(dto -> {
+            UpdateLaboratoryResultDTO updateDto = new UpdateLaboratoryResultDTO();
+            updateDto.setLaboratoryOrder(dto.getLaboratoryOrder());
+            updateDto.setParameter(dto.getParameter());
+            updateDto.setNumericalValue(dto.getNumericalValue());
+            updateDto.setTextValue(dto.getTextValue());
+            updateDto.setObservation(dto.getObservation());
+
+            super.update(dto.getId(), updateDto);
         });
     }
 

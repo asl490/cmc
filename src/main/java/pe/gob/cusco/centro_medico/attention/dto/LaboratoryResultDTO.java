@@ -43,6 +43,7 @@ public class LaboratoryResultDTO {
 
     @Data
     public static class LaboratoryResultMinDTO {
+        private Long id;
 
         private Long laboratoryOrder;
 
@@ -58,6 +59,22 @@ public class LaboratoryResultDTO {
 
     @Data
     public static class UpdateLaboratoryResultDTO {
+
+        private Long laboratoryOrder;
+
+        private Long parameter;
+
+        private Long numericalValue;
+
+        private String textValue;
+
+        private String observation;
+
+    }
+
+    @Data
+    public static class UpdateLaboratoryResultAllDTO {
+        private Long id;
 
         private Long laboratoryOrder;
 

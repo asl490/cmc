@@ -20,4 +20,6 @@ public interface LaboratoryOrderService
         List<AppointmentDTO> getAppointmentsWithPendingLaboratoryOrders();
 
         PagedResponse<AppointmentDTO> getAppointments(int page, int size, FiltersLaboratoryOrderDTO filters);
+
+        void updateStatusById(Long id, String status);
 }
